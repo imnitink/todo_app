@@ -91,13 +91,15 @@ class _TaskpageState extends State<Taskpage> {
                                 // Check if the task is null
                                 if (widget.task == null) {
                                   Task _newTask = Task(title: value);
-                                  _taskId = await _dbHelper.insertTask(_newTask);
+                                  _taskId =
+                                      await _dbHelper.insertTask(_newTask);
                                   setState(() {
                                     _contentVisile = true;
                                     _taskTitle = value;
                                   });
                                 } else {
-                                  await _dbHelper.updateTaskTitle(_taskId, value);
+                                  await _dbHelper.updateTaskTitle(
+                                      _taskId, value);
                                   print("Task Updated");
                                 }
                                 _descriptionFocus.requestFocus();
@@ -128,15 +130,17 @@ class _TaskpageState extends State<Taskpage> {
                       child: TextField(
                         focusNode: _descriptionFocus,
                         onSubmitted: (value) async {
-                          if(value != ""){
-                            if(_taskId != 0){
-                              await _dbHelper.updateTaskDescription(_taskId, value);
+                          if (value != "") {
+                            if (_taskId != 0) {
+                              await _dbHelper.updateTaskDescription(
+                                  _taskId, value);
                               _taskDescription = value;
                             }
                           }
                           _todoFocus.requestFocus();
                         },
-                        controller: TextEditingController()..text = _taskDescription,
+                        controller: TextEditingController()
+                          ..text = _taskDescription,
                         decoration: InputDecoration(
                           hintText: "Enter Description for the task...",
                           border: InputBorder.none,
@@ -159,10 +163,12 @@ class _TaskpageState extends State<Taskpage> {
                             itemBuilder: (context, index) {
                               return GestureDetector(
                                 onTap: () async {
-                                  if(snapshot.data[index].isDone == 0){
-                                    await _dbHelper.updateTodoDone(snapshot.data[index].id, 1);
+                                  if (snapshot.data[index].isDone == 0) {
+                                    await _dbHelper.updateTodoDone(
+                                        snapshot.data[index].id, 1);
                                   } else {
-                                    await _dbHelper.updateTodoDone(snapshot.data[index].id, 0);
+                                    await _dbHelper.updateTodoDone(
+                                        snapshot.data[index].id, 0);
                                   }
                                   setState(() {});
                                 },
@@ -214,7 +220,7 @@ class _TaskpageState extends State<Taskpage> {
                                     Todo _newTodo = Todo(
                                       title: value,
                                       isDone: 0,
-                                        taskId: _taskId,
+                                      taskId: _taskId,
                                     );
                                     await _dbHelper.insertTodo(_newTodo);
                                     setState(() {});
@@ -243,7 +249,7 @@ class _TaskpageState extends State<Taskpage> {
                   right: 24.0,
                   child: GestureDetector(
                     onTap: () async {
-                      if(_taskId != 0) {
+                      if (_taskId != 0) {
                         await _dbHelper.deleteTask(_taskId);
                         Navigator.pop(context);
                       }
@@ -252,7 +258,7 @@ class _TaskpageState extends State<Taskpage> {
                       width: 60.0,
                       height: 60.0,
                       decoration: BoxDecoration(
-                        color: Color(0xFFFE3577),
+                        color: Color(0xfff96060),
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Image(
