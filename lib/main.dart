@@ -17,19 +17,19 @@ class MyApp extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      home: SplashScrennPage(),
+      home: SplashScreenPage(),
     );
   }
 }
 
-class SplashScrennPage extends StatefulWidget {
-  const SplashScrennPage({Key key}) : super(key: key);
+class SplashScreenPage extends StatefulWidget {
+  const SplashScreenPage({Key key}) : super(key: key);
 
   @override
-  _SplashScrennPageState createState() => _SplashScrennPageState();
+  _SplashScreenPageState createState() => _SplashScreenPageState();
 }
 
-class _SplashScrennPageState extends State<SplashScrennPage> {
+class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
